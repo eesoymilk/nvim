@@ -2,6 +2,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
+    cond = vim.g.vscode,
     dependencies = {},
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     opts = {
