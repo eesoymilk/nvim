@@ -4,16 +4,16 @@ This repository contains my personal Neovim configuration. If you'd like to use 
 
 ## Usage
 
-1. Backup your current config
+1. Backup your current config if needed
     > Before making any changes, it's wise to backup your current Neovim configuration.
 
-   ```bash
+   ```zsh
    mv ~/.config/nvim ~/.config/nvim_backup
    ```
 
 2. Cloning and Using This Configuration
 
-    ```bash
+    ```zsh
     git clone https://github.com/eesoymilk/nvim.git ~/.config/nvim
     nvim
     ```
