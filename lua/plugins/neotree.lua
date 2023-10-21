@@ -6,15 +6,12 @@ return {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
     },
-    cmd = "Neotree",
     keys = {
         { "<leader>nt", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
     },
-    deactivate = function()
-        vim.cmd([[Neotree close]])
-    end,
+    enabled = not vim.g.vscode,
     config = function()
-        require("neo-tree").setup(opts)
+        require("neo-tree").setup()
     end,
 }
 
