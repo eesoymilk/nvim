@@ -4,8 +4,12 @@ return {
     name = "catppuccin",
     priority = 1000,
     cond = vim.g.vscode,
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme catppuccin]])
+    opts = {
+        transparent_background = true,
+    },
+    config = function(_, opts)
+        require("catppuccin").setup(opts)
+        -- load the colorscheme here
+        vim.cmd([[colorscheme catppuccin]])
     end,
 }
