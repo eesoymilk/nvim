@@ -6,6 +6,16 @@ return {
     cond = vim.g.vscode,
     opts = {
         transparent_background = true,
+        integrations = {
+            nvimtree = true,
+        },
+        highlight_overrides = {
+            mocha = function(mocha)
+                return {
+                    NvimTreeNormal = { bg = mocha.none },
+                }
+            end,
+        },
     },
     config = function(_, opts)
         require("catppuccin").setup(opts)
