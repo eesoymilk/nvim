@@ -10,6 +10,7 @@ return {
             vim.g.lsp_zero_extend_lspconfig = 0
         end,
     },
+
     {
         'williamboman/mason.nvim',
         lazy = false,
@@ -18,7 +19,7 @@ return {
 
     -- Autocompletion
     {
-        'hrsh7th/nvim-cmp',
+       'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         dependencies = {
             {'L3MON4D3/LuaSnip'},
@@ -40,6 +41,13 @@ return {
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
                     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+                    ['<Tab>'] = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        else
+                            fallback()
+                        end
+                    end,
                 })
             })
         end
@@ -66,7 +74,10 @@ return {
             end)
 
             require('mason-lspconfig').setup({
-                ensure_installed = {},
+                ensure_installed = {
+                    'lua_ls',
+                    'pyright',
+                },
                 handlers = {
                     lsp_zero.default_setup,
                     lua_ls = function()

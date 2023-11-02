@@ -20,6 +20,6 @@ return {
     config = function(_, opts)
         require("catppuccin").setup(opts)
         -- load the colorscheme here
-        vim.cmd([[colorscheme catppuccin]])
+        vim.cmd([[colorscheme catppuccin-macchiato]])
     end,
 }
