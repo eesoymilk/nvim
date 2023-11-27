@@ -36,14 +36,22 @@ return {
             cmp.setup({
                 formatting = lsp_zero.cmp_format(),
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
                     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-                    ['<Tab>'] = function(fallback)
+                    ['<C-l>'] = cmp.mapping.complete(),
+                    ['<C-j>'] = function(fallback)
                         if cmp.visible() then
-                            cmp.select_next_item()
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                        else
+                            fallback()
+                        end
+                    end,
+                    ['<C-k>'] = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                         else
                             fallback()
                         end
@@ -75,6 +83,7 @@ return {
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
+                    'rust_analyzer',
                     'lua_ls',
                     'pyright',
                 },
