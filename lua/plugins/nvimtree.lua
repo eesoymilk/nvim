@@ -11,14 +11,26 @@ return {
     keys = {
         {
             "<leader>n",
-            function ()
+            function()
                 require("nvim-tree.api").tree.toggle()
             end,
             desc = "Toggle Nvim Tree",
         },
     },
-    config = function ()
-        require("nvim-tree").setup()
+    opts = {
+        tab = {
+            sync = {
+                open = true,
+                close = true,
+            },
+        },
+        actions = {
+            open_file = {
+                quit_on_open = true,
+            },
+        },
+    },
+    config = function(_, opts)
+        require("nvim-tree").setup(opts)
     end,
 }
-

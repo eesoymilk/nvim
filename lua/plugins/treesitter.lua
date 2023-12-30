@@ -15,6 +15,8 @@ return {
             "cpp",
             "html",
             "javascript",
+            "svelte",
+            "css",
             "json",
             "lua",
             "markdown",

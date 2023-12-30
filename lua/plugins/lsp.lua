@@ -42,6 +42,7 @@ return {
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
                     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                     ['<C-l>'] = cmp.mapping.complete(),
+
                     ['<C-j>'] = function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -86,6 +87,7 @@ return {
                     'rust_analyzer',
                     'lua_ls',
                     'pyright',
+                    'svelte',
                 },
                 handlers = {
                     lsp_zero.default_setup,
