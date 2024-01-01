@@ -5,7 +5,12 @@ return {
 		{
 			"<leader>fm",
 			function()
-				vim.lsp.buf.format({ async = false })
+				vim.lsp.buf.format({
+					async = false,
+					filter = function(client)
+						return client.name == "null-ls"
+					end,
+				})
 			end,
 			desc = "Format",
 		},
@@ -16,8 +21,12 @@ return {
 		return {
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettierd,
-				null_ls.builtins.formatting.eslint,
+				null_ls.builtins.formatting.prettierd.with({
+					extra_filetypes = { "astro", "svelte" },
+				}),
+				null_ls.builtins.formatting.eslint.with({
+					extra_filetypes = { "astro", "svelte" },
+				}),
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
@@ -32,6 +41,9 @@ return {
 							vim.lsp.buf.format({
 								async = false,
 								bufnr = bufnr,
+								filter = function(clnt)
+									return clnt.name == "null-ls"
+								end,
 							})
 						end,
 					})
