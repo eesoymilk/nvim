@@ -24,9 +24,6 @@ return {
 				null_ls.builtins.formatting.prettierd.with({
 					extra_filetypes = { "astro", "svelte" },
 				}),
-				null_ls.builtins.formatting.eslint.with({
-					extra_filetypes = { "astro", "svelte" },
-				}),
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
