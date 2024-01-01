@@ -10,6 +10,7 @@ return {
         indent = { enable = true },
         auto_install = true,
         ensure_installed = {
+            "astro",
             "bash",
             "c",
             "cpp",

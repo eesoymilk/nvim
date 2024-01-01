@@ -14,7 +14,14 @@ return {
     {
         'williamboman/mason.nvim',
         lazy = false,
-        config = true,
+        opts = {
+            ensure_installed = {
+                'prettierd',
+            },
+        },
+        config = function(_, opts)
+            require('mason').setup(opts)
+        end,
     },
 
     -- Autocompletion
@@ -68,6 +75,7 @@ return {
         cmd = {'LspInfo', 'LspInstall', 'LspStart'},
         event = {'BufReadPre', 'BufNewFile'},
         dependencies = {
+            {'williamboman/mason.nvim'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'williamboman/mason-lspconfig.nvim'},
         },
@@ -85,9 +93,12 @@ return {
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'rust_analyzer',
+                    'eslint',
                     'lua_ls',
                     'pyright',
                     'svelte',
+                    'astro',
+                    'tailwindcss',
                 },
                 handlers = {
                     lsp_zero.default_setup,
