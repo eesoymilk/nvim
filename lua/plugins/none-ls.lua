@@ -20,10 +20,14 @@ return {
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		return {
 			sources = {
+				null_ls.builtins.formatting.clang_format.with({
+					extra_filetypes = { "arduino", "ino" },
+				}),
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettierd.with({
 					extra_filetypes = { "astro", "svelte" },
 				}),
+				null_ls.builtins.formatting.black,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
