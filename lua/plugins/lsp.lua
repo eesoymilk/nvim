@@ -20,6 +20,7 @@ return {
 				"clang-format",
 				"stylua",
 				"prettierd",
+				"rustywind",
 			},
 		},
 		config = function(_, opts)

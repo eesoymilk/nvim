@@ -27,7 +27,12 @@ return {
 				null_ls.builtins.formatting.prettierd.with({
 					extra_filetypes = { "astro", "svelte" },
 				}),
-				null_ls.builtins.formatting.black,
+				null_ls.builtins.formatting.black.with({
+					extra_args = { "--line-length", "79" },
+				}),
+				null_ls.builtins.formatting.rustywind.with({
+					extra_filetypes = { "astro" },
+				}),
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
