@@ -9,6 +9,7 @@ return {
 		highlight = { enable = true },
 		indent = { enable = true },
 		auto_install = true,
+		autotag = { enable = true },
 		ensure_installed = {
 			"arduino",
 			"astro",
