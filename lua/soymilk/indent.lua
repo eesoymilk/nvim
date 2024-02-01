@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "FileType" }, {
 			"yaml",
 			"tsx",
 			"astro",
+			"pest",
 		}
 		local found = false
 

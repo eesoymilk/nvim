@@ -33,6 +33,7 @@ return {
 				null_ls.builtins.formatting.rustywind.with({
 					extra_filetypes = { "astro" },
 				}),
+				null_ls.builtins.formatting.rustfmt,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
@@ -47,9 +48,9 @@ return {
 							vim.lsp.buf.format({
 								async = false,
 								bufnr = bufnr,
-								filter = function(clnt)
-									return clnt.name == "null-ls"
-								end,
+								-- filter = function(clnt)
+								-- 	return clnt.name == "null-ls"
+								-- end,
 							})
 						end,
 					})

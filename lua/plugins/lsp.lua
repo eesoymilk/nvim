@@ -20,6 +20,7 @@ return {
 				"clang-format",
 				"stylua",
 				"prettierd",
+				"rustfmt",
 				"rustywind",
 			},
 		},
@@ -125,6 +126,7 @@ return {
 					"eslint",
 					"lua_ls",
 					"pyright",
+					"pest_ls",
 					"svelte",
 					"astro",
 					"tailwindcss",
@@ -136,6 +138,9 @@ return {
 						local lua_opts = lsp_zero.nvim_lua_ls()
 						require("lspconfig").lua_ls.setup(lua_opts)
 					end,
+					-- pest_ls = function()
+					-- 	require("pest-vim").setup()
+					-- end,
 				},
 			})
 		end,
